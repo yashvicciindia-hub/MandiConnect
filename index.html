@@ -214,7 +214,40 @@
   <p><b>Mandi Connect</b>: connecting India's farmers and buyers, one mandi at a time.</p>
 </footer>
 
-<a href="https://wa.me/911800180155" class="whatsapp-fab" title="Chat with us on WhatsApp" aria-label="Chat with us on WhatsApp" target="_blank" rel="noopener"><i data-lucide="message-circle" aria-hidden="true"></i></a>
+<button type="button" class="mc-chat-launcher" id="mcChatLauncher" aria-label="Open Mandi Connect Assistant" aria-expanded="false" aria-controls="mcChatWindow">
+  <span class="mc-chat-launcher-icon" aria-hidden="true">
+    <svg viewBox="0 0 48 48" fill="none">
+      <path d="M12 34.5c-3.4-2.6-5.5-6.6-5.5-11.1C6.5 15.2 14.1 8 24 8s17.5 7.2 17.5 15.4S33.9 38.8 24 38.8c-1.8 0-3.5-.2-5.1-.7L12 41.5v-7z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M24 16.5c.2 4.8-1.6 7.2-4.2 9.2 2.4.1 4.6-.6 6.4-2" stroke="#F5A300" stroke-width="2" stroke-linecap="round"/>
+      <path d="M24 16.2v12.6M21.2 19.6l2.8-2.8 2.8 2.8" stroke="#F5A300" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+</button>
+
+<div class="mc-chat-window" id="mcChatWindow" role="dialog" aria-modal="true" aria-labelledby="mcChatTitle" aria-describedby="mcChatStatus" hidden>
+  <div class="mc-chat-header">
+    <img src="assets/mandilogo.png" alt="" class="mc-chat-logo">
+    <div class="mc-chat-heading">
+      <p class="mc-chat-kicker">Mandi Connect</p>
+      <h2 id="mcChatTitle">Market Assistant</h2>
+      <p id="mcChatStatus" class="mc-chat-status">AI-powered market guide</p>
+    </div>
+    <button type="button" class="mc-chat-close" id="mcChatClose" aria-label="Close Mandi Connect Assistant">
+      <i data-lucide="x" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="mc-chat-body" id="mcChatBody" aria-live="polite"></div>
+  <form class="mc-chat-form" id="mcChatForm">
+    <div class="mc-chat-form-row">
+      <label class="visually-hidden" for="mcChatInput">Message Mandi Connect Assistant</label>
+      <textarea id="mcChatInput" rows="1" placeholder="Ask about mandis, prices, buyers..." autocomplete="off"></textarea>
+      <button type="submit" class="mc-chat-send" aria-label="Send message">
+        <i data-lucide="send" aria-hidden="true"></i>
+      </button>
+    </div>
+    <button type="button" class="mc-chat-clear" id="mcChatClear">Clear conversation</button>
+  </form>
+</div>
 
 <div id="toast"></div>
 <div class="modal-backdrop connect-modal-backdrop" id="connectModal" hidden>
@@ -281,6 +314,7 @@
 </div>
 <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 <script src="script.js"></script>
+<script src="chatbot.js"></script>
 
 </body>
 </html>
