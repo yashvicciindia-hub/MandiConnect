@@ -685,3 +685,131 @@
     .mc-chat-window, .mc-dots span{animation:none;}
     .mc-chat-launcher, .mc-chip, .mc-chat-send{transition:none;}
   }
+
+  /* ═══════════════════════════════════════════════════════
+     MANDI CONNECT — APP DOWNLOAD CTA (Floating)
+     Isolated class names to avoid affecting existing UI
+  ═══════════════════════════════════════════════════════ */
+  .mandiconnect-app-download{
+    position:fixed;
+    right:24px;
+    bottom:102px; /* sits above the 62px chatbot launcher (24px bottom + 62px height + 16px gap) */
+    z-index:219;  /* below chatbot z-index:220, above normal content */
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:0;
+    max-width:calc(100vw - 48px);
+    /* Pill expands to the left, anchored right */
+    flex-direction:row;
+  }
+  .mandiconnect-app-download__link{
+    display:inline-flex;
+    align-items:center;
+    gap:0;
+    text-decoration:none;
+    background:var(--eggplant);
+    color:#fff;
+    border:1.5px solid rgba(245,163,0,0.45);
+    border-radius:999px;
+    box-shadow:0 8px 22px rgba(15,42,28,0.28);
+    overflow:hidden;
+    /* collapsed: only the icon is visible */
+    width:54px;
+    height:54px;
+    padding:0;
+    transition:
+      width 0.26s ease,
+      padding 0.26s ease,
+      box-shadow 0.26s ease,
+      background 0.26s ease,
+      border-color 0.26s ease;
+    will-change:width;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .mandiconnect-app-download__link:hover,
+  .mandiconnect-app-download__link:focus-visible{
+    width:198px;
+    padding:0 18px 0 12px;
+    box-shadow:0 12px 30px rgba(15,42,28,0.38);
+    background:#143524;
+    border-color:rgba(245,163,0,0.7);
+    outline:none;
+  }
+  .mandiconnect-app-download__link:focus-visible{
+    outline:3px solid rgba(245,163,0,0.8);
+    outline-offset:3px;
+  }
+  .mandiconnect-app-download__icon-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 auto;
+    width:54px;
+    height:54px;
+    color:var(--turmeric);
+  }
+  .mandiconnect-app-download__icon-wrap svg{
+    width:26px;
+    height:26px;
+    stroke-width:1.7;
+    flex:0 0 auto;
+  }
+  .mandiconnect-app-download__label{
+    flex:1;
+    min-width:0;
+    overflow:hidden;
+    /* label slides in via opacity + slight translate when pill expands */
+    opacity:0;
+    transform:translateX(6px);
+    transition:
+      opacity 0.18s ease 0.06s,
+      transform 0.18s ease 0.06s;
+    pointer-events:none;
+    font-family:'DM Sans', sans-serif;
+    font-size:14px;
+    font-weight:700;
+    color:#fff;
+    letter-spacing:0.2px;
+    white-space:nowrap;
+  }
+  .mandiconnect-app-download__link:hover .mandiconnect-app-download__label,
+  .mandiconnect-app-download__link:focus-visible .mandiconnect-app-download__label{
+    opacity:1;
+    transform:translateX(0);
+    pointer-events:auto;
+  }
+
+  /* Mobile: keep it compact — icon-only pill */
+  @media(max-width:640px){
+    .mandiconnect-app-download{
+      right:16px;
+      bottom:88px; /* above the 56px chatbot on mobile (16px + 56px + 16px gap) */
+    }
+    .mandiconnect-app-download__link{
+      width:50px;
+      height:50px;
+    }
+    .mandiconnect-app-download__link:hover,
+    .mandiconnect-app-download__link:focus-visible{
+      /* on mobile, keep compact — don't expand */
+      width:50px;
+      padding:0;
+    }
+    .mandiconnect-app-download__icon-wrap{
+      width:50px;
+      height:50px;
+    }
+    .mandiconnect-app-download__label{
+      /* always hidden on mobile */
+      display:none;
+    }
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .mandiconnect-app-download__link,
+    .mandiconnect-app-download__label{
+      transition:none;
+    }
+  }
